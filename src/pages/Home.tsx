@@ -4,6 +4,7 @@ import { fetchStockData } from '../services/DataService';
 
 const Home: React.FC = () => {
   const [stockMatches, setStockMatches] = useState<any[]>([]);
+  const keywords = ['tesco', 'tencent', 'BA', 'SAIC'];
 
   const handleSearch = async (searchValue: string) => {
     const matches = await fetchStockData(searchValue);
@@ -13,7 +14,7 @@ const Home: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-4">
       <h1 className="text-3xl font-bold mb-4">Stock Tracker</h1>
-      <Search placeholder="Search" onSearch={handleSearch} />
+      <Search placeholder="Search" onSearch={handleSearch} keywords={keywords} />
       <div className="mt-4">
         {stockMatches.length === 0 ? (
           <p className="text-red-500">No Data</p>

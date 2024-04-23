@@ -27,17 +27,20 @@ const MarketStatus: React.FC = () => {
     setFilteredMarketStatus(sortedMarketStatus);
   };
 
-  const handleSearch = (searchValue: string) => {
+  const handleSearch = async (searchValue: string): Promise<void> => {
     const filteredData = marketStatus.filter(market =>
       market.region.toLowerCase().includes(searchValue.toLowerCase())
     );
     setFilteredMarketStatus(filteredData);
+    return Promise.resolve();
   };
+
+  const keywords = ['United States', 'Canada', 'United Kingdom'];
 
   return (
     <div className="container mx-auto px-4 py-4">
       <h1 className="text-3xl font-bold mb-4">Market Status</h1>
-      <Search placeholder="Search by region" onSearch={handleSearch} />
+      <Search placeholder="Search by region" onSearch={handleSearch} keywords={keywords} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
         {filteredMarketStatus.map((market, index) => (
           <div key={index} className="bg-white shadow-card p-4">

@@ -28,7 +28,6 @@ const StockData: React.FC = () => {
   const rowsPerPage = 10;
 
   useEffect(() => {
-    // Fetch the data from the API
     const fetchData = async () => {
       try {
         const data = await fetchIntradayData();

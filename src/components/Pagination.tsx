@@ -10,10 +10,10 @@ interface PaginationProps {
 const Pagination: React.FC<PaginationProps> = ({ totalRows, rowsPerPage, currentPage, paginate }) => {
   const totalPages = Math.ceil(totalRows / rowsPerPage);
 
-  // Calculate the range of page numbers to display
+
   let startPage = 1;
   let endPage = totalPages;
-  const displayedPages = 3; // Number of pages to display
+  const displayedPages = 3; 
 
   if (totalPages > displayedPages) {
     const halfDisplayed = Math.floor(displayedPages / 2);
